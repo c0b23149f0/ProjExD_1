@@ -29,23 +29,19 @@ def main():
         if key_lst[pg.K_UP]:
             x=-1
             y=-1
-            tree_img_rect.move_ip((x,y))
         elif key_lst[pg.K_DOWN]:
             x=-1
             y=1
-            tree_img_rect.move_ip((x,y))
         elif key_lst[pg.K_RIGHT]:
             x=2
             y=0
-            tree_img_rect.move_ip((x,y))
         elif key_lst[pg.K_LEFT]:
             x=-2
             y=0
-            tree_img_rect.move_ip((x,y))
         else:
             x=-1
             y=0
-            tree_img_rect.move_ip((x,y))
+        tree_img_rect.move_ip((x,y))
 
         screen.blit(bg_img, [-tmr, 0])
         screen.blit(bg_img_1, [1600-tmr, 0])
