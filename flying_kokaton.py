@@ -16,20 +16,33 @@ def main():
     tree_img_rect=tree_img.get_rect()
     tree_img_rect.center=300,200
     tmr = 0
+    x=0
+    y=0
+
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        key_lst=pg.key.get_pressed()
-        if key_lst[pg.K_UP]:
-            tree_img_rect.move_ip((0,-1))
-        elif key_lst[pg.K_DOWN]:
-            tree_img_rect.move_ip((0,1))
-        elif key_lst[pg.K_RIGHT]:
-            tree_img_rect.move_ip((1,0))
-        elif key_lst[pg.K_LEFT]:
-            tree_img_rect.move_ip((-1,0))
         if tmr >= 3200:
             tmr=0
+
+        key_lst=pg.key.get_pressed()
+        if key_lst[pg.K_UP]:
+            x=-1
+            y=-1
+        elif key_lst[pg.K_DOWN]:
+            x=-1
+            y=1
+        elif key_lst[pg.K_RIGHT]:
+            x=2
+            y=0
+        elif key_lst[pg.K_LEFT]:
+            x=-2
+            y=0
+        else:
+            x=-1
+            y=0
+        tree_img_rect.move_ip((x,y))
+
         screen.blit(bg_img, [-tmr, 0])
         screen.blit(bg_img_1, [1600-tmr, 0])
         screen.blit(bg_img, [3200-tmr, 0])
@@ -40,7 +53,7 @@ def main():
 
         pg.display.update()
         tmr += 1
-        clock.tick(1600)
+        clock.tick(200)
 
 
 if __name__ == "__main__":
